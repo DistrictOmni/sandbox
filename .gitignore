@@ -1,0 +1,83 @@
+# Ignore system files
+.DS_Store
+Thumbs.db
+*.bak
+
+# Ignore IDE/editor-specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Ignore logs and cache files
+logs/
+storage/logs/
+storage/framework/
+cache/
+*.log
+
+# Ignore environment variables
+.env
+.env.local
+.env.production
+.env.testing
+.env.*.local
+
+# Ignore vendor directory (do not commit dependencies)
+vendor/
+composer.lock
+
+# Ignore PHPStorm project files
+/.phpstorm.meta.php
+/.phpunit.result.cache
+
+# Ignore PHPUnit and PHPStan files
+phpunit.xml
+phpunit.xml.dist
+phpstan.neon
+phpstan.neon.dist
+
+# Ignore Composer dependencies if already installed
+/composer.phar
+
+# Ignore node-related files (if frontend exists)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Ignore temporary & build artifacts
+build/
+dist/
+coverage/
+.phpunit.result.cache
+.phpcs-cache
+
+# Ignore uploaded files & user-generated content
+public/uploads/
+public/storage/
+storage/uploads/
+
+# Ignore database files (if using SQLite for development)
+database/database.sqlite
+database/*.sqlite
+database/*.sqlite3
+*.sql
+
+# Ignore backup files
+*.bak
+*.old
+*.swp
+*.swo
+*.tmp
+
+# Ignore dependency manager lock files (if using NPM/Yarn)
+package-lock.json
+yarn.lock
+
+# Ignore Laravel-style storage & framework files (optional)
+bootstrap/cache/
+storage/app/
+storage/framework/cache/
+storage/framework/sessions/
+storage/framework/testing/
+storage/framework/views/
