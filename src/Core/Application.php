@@ -157,16 +157,30 @@ private function registerModuleRoutes(): void
     public function run(): void
     {
         try {
-            // Log incoming request details
+            // Ensure session is started
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
+    
+            // Current requested URI
+            $uri = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?? '/';
+            $uri = rtrim($uri, '/') ?: '/';
+    //SIMULATE LOGGED IN USER
+    $_SESSION['user_id'] = 1;
+            // If user not logged in, and not requesting an auth route, redirect them to login
+            if (!isset($_SESSION['user_id']) && !str_starts_with($uri, '/auth')) {
+                header('Location: /auth/login');
+                exit;
+            }
+    
+            // Otherwise, proceed with routing
             $this->logger->debug("Incoming request: ", [
                 'method' => $_SERVER['REQUEST_METHOD'],
-                'uri' => $_SERVER['REQUEST_URI'],
+                'uri' => $uri,
                 'params' => $_REQUEST
             ]);
-
-            // Dispatch the request
+    
             $this->router->dispatch();
-
             $this->logger->debug("Request dispatched successfully.");
         } catch (Exception $e) {
             $this->logger->error("Request handling failed: " . $e->getMessage());
@@ -174,4 +188,5 @@ private function registerModuleRoutes(): void
             echo "Internal Server Error.";
         }
     }
+    
 }
