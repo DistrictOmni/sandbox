@@ -143,12 +143,20 @@ class Router
     
         // Capture the view output
         ob_start();
+    
         // Adjust path to your actual view directory
-        include __DIR__ . '/' . $view . '.php'; // Adjust the path as necessary
+        $viewPath = __DIR__ . '/' . $view . '.php';
+        echo "View file path: " . $viewPath . "\n"; // Debugging: Output the view file path
+    
+        include $viewPath; // Include the view file
+    
         $content = ob_get_clean();
     
         // Now load the chosen layout, injecting the $content
-        include __DIR__ . '/Layouts/' . $layout . '.php'; // Adjust the path as necessary
+        $layoutPath = __DIR__ . '/Layouts/' . $layout . '.php';
+        echo "Layout file path: " . $layoutPath . "\n"; // Debugging: Output the layout file path
+    
+        include $layoutPath; // Include the layout file
     }
     
     
