@@ -144,11 +144,12 @@ class Router
         // Capture the view output
         ob_start();
         // Adjust path to your actual view directory
-        include __DIR__ . '/../Modules/Dashboard/Views/' . $view . '.php';
+        include __DIR__ . '/' . $view . '.php'; // Adjust the path as necessary
         $content = ob_get_clean();
     
         // Now load the chosen layout, injecting the $content
-        include __DIR__ . '/Layouts/' . $layout . '.php';
+        include __DIR__ . '/Layouts/' . $layout . '.php'; // Adjust the path as necessary
     }
+    
     
 }

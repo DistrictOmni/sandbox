@@ -7,11 +7,11 @@ return function (RouteCollector $r) {
     // Example route
     $r->addRoute('GET', '/dashboard', function () {
         // ...
-        Router::render('Dashboard', 'GlobalLayout');
+        Router::render('../Modules/Dashboard/Views/Dashboard', 'GlobalLayout');
     });
     // Example route
     $r->addRoute('GET', '/', function () {
         // ...
-        Router::render('Dashboard', 'GlobalLayout');
+        Router::render('../Modules/Dashboard/Views/Dashboard', 'GlobalLayout');
     });
 };
